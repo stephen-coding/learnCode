@@ -23,6 +23,7 @@ public class BinarySearch {
             //比关键字小则关键字在右区域
             return recursionBinarySearch(arr, key, middle + 1, high);
         }else {
+
             return middle;
         }
 
