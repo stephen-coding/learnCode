@@ -47,6 +47,7 @@ public class BinarySearch {
         }
 
         while(low <= high){
+
             middle = (low + high) / 2;
             if(arr[middle] > key){
                 //比关键字大则关键字在左区域
