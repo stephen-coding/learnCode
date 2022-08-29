@@ -9,6 +9,7 @@ public class LeetCode1470 {
         int index = 0;
 
         int[] ans = new int[nums.length];
+
         for (int i = 0; i < n; i++) {
             ans[index++] = nums[i];
             ans[index++] = nums[n + i];
