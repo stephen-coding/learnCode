@@ -22,6 +22,8 @@ public class LeetCode946 {
 
         }
 
+        //todo 不使用stack可以进行优化，用数组模拟入栈和弹出，有时间写一下
+
         return stack.isEmpty();
 
     }
