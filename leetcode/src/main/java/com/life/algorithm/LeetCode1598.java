@@ -2,6 +2,7 @@ package com.life.algorithm;
 
 public class LeetCode1598 {
 
+    //todo 未解出答案，需改进
     public int minOperations(String[] logs) {
 
         int nums = 0;
