@@ -65,4 +65,23 @@ public class Solution {
         }
         return result[k - 1];
     }
+
+    //判断两个字符串，经过重排后是否相等
+    public boolean CheckPermutation(String s1, String s2) {
+
+        if(s1.length() != s2.length()) {
+            return false;
+        }
+        int[] alphabet = new int[128];
+        for (int i = 0; i < s1.length(); i++) {
+            alphabet[s1.charAt(i)]++;
+            alphabet[s2.charAt(i)]--;
+        }
+        for (int n : alphabet) {
+            if (n != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
