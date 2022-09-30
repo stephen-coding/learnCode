@@ -84,4 +84,33 @@ public class Solution {
         }
         return true;
     }
+
+    /**
+     *
+     * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
+     */
+    public void setZeroes(int[][] matrix) {
+        int len1 = matrix.length;// 行数
+        int len2 = matrix[0].length;//列数
+        int[] row = new int[len1];
+        int[] column = new int[len2];
+        //遍历矩阵，将所有等于0的位置进行标记
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (matrix[i][j] == 0) {
+                    row[i]  = 1;
+                    column[j] = 1;
+                }
+            }
+        }
+        //将标记的位置进行赋值
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (row[i] == 1 || column[j] == 1) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        
+    }
 }
