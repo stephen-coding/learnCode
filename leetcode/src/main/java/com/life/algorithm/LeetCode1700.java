@@ -11,7 +11,7 @@ public class LeetCode1700 {
             arr[student]++;
         }
         for (int sandwiche : sandwiches) {
-            //如果栈顶的食物没有人吃,节结束循环，如果存在能吃栈顶食物的同学那么一定能够遍历到他
+            //如果栈顶的食物没有人吃,直接结束循环，如果存在能吃栈顶食物的同学那么一定能够遍历到他
             if (arr[sandwiche] == 0) {
                 break;
             }
