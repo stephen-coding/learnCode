@@ -37,8 +37,7 @@ public class LeetCode1464 {
     }
 
     public static void main(String[] args) {
-        int[] arr = {10, 2, 5, 2};
-        int i = maxProducts1(arr);
-        System.out.println(i);
+
+        System.out.println(48 >> 5 );
     }
 }
