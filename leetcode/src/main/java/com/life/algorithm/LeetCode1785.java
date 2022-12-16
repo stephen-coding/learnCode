@@ -6,26 +6,12 @@ public class LeetCode1785 {
 
     public static int minElements(int[] nums, int limit, int goal) {
 
-        int count = 0;
-        int sum = Arrays.stream(nums).sum();
-        if (sum == goal) return 0;
-        int temp = sum - goal;
-        if (Math.abs(temp) <= limit) return 1;
-        int i;
-        if (temp >= 0) {
-            i = temp - limit;
-        } else {
-
-            i = limit - temp;
+        long s = 0;
+        for (int i : nums) {
+            s += i;
         }
-        count += 2;
-        if (i <= limit) return count;
-        count = 0;
-        while (i > limit) {
-            i -= limit;
-            count++;
-        }
-        return count;
+        long d = Math.abs(s - goal);
+        return (int) ((d + limit - 1) / limit);
     }
 
     public static void main(String[] args) {
