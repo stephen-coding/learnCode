@@ -17,4 +17,20 @@ public class Sort {
         }
 
     }
+
+    public static void bubbleSort(int[] arr){
+
+        //冒泡排序的时间复杂度为O(n*n)
+        int temp = 0;//临时变量
+        for (int j = 0; j < arr.length - 1; j++) {
+            for (int i = 0; i < arr.length-1 -j ; i++) {
+                if (arr[i] > arr[i+1]){
+                    //交换
+                    temp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = temp;
+                }
+            }
+        }
+    }
 }

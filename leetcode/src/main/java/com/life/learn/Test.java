@@ -23,10 +23,13 @@ public class Test {
 
     }
 
+    static int tt;
+
 
     public static void main(String[] args) {
 
-
+        Test test = null;
+        System.out.println();
     }
 
 
