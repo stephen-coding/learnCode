@@ -15,7 +15,7 @@ public class RootTreeUtils {
 
     public static <M> List<M> buildTree(List<M> list, Function<M, ?> mKey, Function<M, ?> treeConnectKey, Function<M, ? extends Comparable> treeSortKey, Consumers<M, M> consumer) {
 
-        if (list.isEmpty()) {
+        if (CollUtil.isEmpty(list)) {
             return Collections.emptyList();
         }
         Assert.notNull(mKey, "父级被子级关联的字段不能为空");
