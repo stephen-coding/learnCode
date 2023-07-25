@@ -23,8 +23,6 @@ public class Utils {
      */
     public static void easyExcelExport(List<? extends BaseRowModel> resList, String fileName, HttpServletResponse response) throws IOException {
         //指定文件输出位置，使用该方法不需要引入HttpServletResponse （根据业务需求，而选其一）
-        /*OutputStream outputStream =new FileOutputStream("H:/excel/file/myexcel3.xlsx");
-        ExcelWriter excelWriter = EasyExcelFactory.getWriter(outputStream);*/
 
         //调用浏览器下载（根据业务需求，而选其一）
         String fileName11 = URLEncoder.encode(fileName, "UTF-8");//避免中文乱码
