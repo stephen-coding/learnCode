@@ -44,9 +44,13 @@ public class RootTreeUtils {
         if (treeSortKey != null) {
             //排序
             tree.sort(Comparator.comparing(treeSortKey));
-            return tree.parallelStream().peek(b -> consumer.accept(b, CollUtil.sort(collect.get(mKey.apply(b)), Comparator.comparing(treeSortKey)))).collect(Collectors.toList());
+            return tree.parallelStream()
+                    .peek(b -> consumer.accept(b, CollUtil.sort(collect.get(mKey.apply(b)), Comparator.comparing(treeSortKey))))
+                    .collect(Collectors.toList());
         } else {
-            return tree.parallelStream().peek(b -> consumer.accept(b, collect.get(mKey.apply(b)))).collect(Collectors.toList());
+            return tree.parallelStream()
+                    .peek(b -> consumer.accept(b, collect.get(mKey.apply(b))))
+                    .collect(Collectors.toList());
         }
     }
 
