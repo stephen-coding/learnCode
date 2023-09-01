@@ -1,5 +1,6 @@
 package com.life.algorithm;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,5 +37,60 @@ public class LeetCode833 {
             }
         }
         return -1;
+    }
+
+    public String findReplaceString1(String s, int[] indices, String[] sources, String[] targets) {
+        int n = s.length();
+
+        int[] next = new int[n]; // 使用 KMP 算法进行匹配
+        Arrays.fill(next, -1);
+
+        boolean[] replaced = new boolean[n]; // 记录已经替换过的位置
+
+        for (String source : sources) {
+            int m = source.length();
+            int j = 0;
+            int k = -1;
+
+            while (j < m - 1) {
+                if (k == -1 || source.charAt(j) == source.charAt(k)) {
+                    j++;
+                    k++;
+                    next[j] = k;
+                } else {
+                    k = next[k];
+                }
+            }
+        }
+
+        char[] arr = s.toCharArray(); // 将字符串转换为字符数组，以便直接修改替换
+
+        for (int i = 0; i < indices.length; i++) {
+            int start = indices[i];
+            int m = sources[i].length();
+
+            if (start + m <= n) {
+                int j = 0;
+                while (j < m && arr[start + j] == sources[i].charAt(j)) {
+                    j++;
+                }
+
+                if (j == m) {
+                    Arrays.fill(replaced, start, start + m, true);
+                    for (int k = 0; k < targets[i].length(); k++) {
+                        arr[start + k] = targets[i].charAt(k);
+                    }
+                }
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            if (!replaced[i]) {
+                sb.append(arr[i]);
+            }
+        }
+
+        return sb.toString();
     }
 }
