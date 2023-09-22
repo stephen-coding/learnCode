@@ -37,28 +37,58 @@ public abstract class CaffeineTransactionalCache<K extends Serializable, V exten
     @Override
     public void put(K key, V value) {
 
-
-
+        lock.lock();
+        try {
+            failAllTransactionsByKey(key);
+            cacheManager.getCache(cacheName).put(key, value);
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void putIfAbsent(K key, V value) {
 
+        lock.lock();
+        try {
+            failAllTransactionsByKey(key);
+            doPutIfAbsent(key, value);
+
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void evict(K key) {
-
+        lock.lock();
+        try {
+            failAllTransactionsByKey(key);
+            doEvict(key);
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void evict(Collection<K> keys) {
 
+        lock.lock();
+        try {
+            keys.forEach(k -> {
+                failAllTransactionsByKey(k);
+                doEvict(k);
+            });
+        } finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void evictOrPut(K key, V value) {
 
+        //No need to put the value in case of Caffeine, because evict will cancel concurrent transaction used to "get" the missing value from cache.
+        evict(key);
     }
 
     @Override
