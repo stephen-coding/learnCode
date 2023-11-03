@@ -47,6 +47,26 @@ public class Utils {
     }
 
 
+    /**
+     *
+     * @param number  要格式化的数字
+     * @param units 包含单位的字符串数组
+     * @param incrementRate  进率
+     * @param baseUnit 基本单位，如" "（空格）用于数字与单位之间的分隔
+     * @return  经过转换后的单位
+     */
+    public static String formatNumberWithCustomUnits(double number, String[] units, int incrementRate, String baseUnit) {
+        int unitIndex = 0;
+
+        while (number >= incrementRate && unitIndex < units.length - 1) {
+            number /= incrementRate;
+            unitIndex++;
+        }
+
+        return String.format("%.2f %s%s", number, units[unitIndex], baseUnit);
+    }
+
+
 
 
 
