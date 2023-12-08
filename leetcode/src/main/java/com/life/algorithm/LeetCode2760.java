@@ -47,7 +47,7 @@ public class LeetCode2760 {
 
     }
 
-    private static int[][] getAllSubsequences(int[] nums) {
+    public static int[][] getAllSubsequences(int[] nums) {
         List<int[]> subsequences = new ArrayList<>();
 
         // 构建连续子序列，并添加到列表中
