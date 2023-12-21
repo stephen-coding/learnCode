@@ -1,5 +1,12 @@
 package com.life;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class LeetCode2441 {
 
     public static int findMaxK(int[] nums) {
@@ -28,9 +35,29 @@ public class LeetCode2441 {
         return -1;
 
     }
+    public static String t(String s) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/M/d");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date date1 = inputFormat.parse(s);
+            //Date date2 = inputFormat.parse(s);
+
+            String formattedDate1 = outputFormat.format(date1);
+            //String formattedDate2 = outputFormat.format(date2);
+
+            return formattedDate1;
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+        }
+
+        return null;
+
+
+    }
 
     public static void main(String[] args) {
-        int[] nums = {-1,10,6,7,-7,1};
-        findMaxK(nums);
+        System.out.println(t("2022/12/9"));
     }
 }
