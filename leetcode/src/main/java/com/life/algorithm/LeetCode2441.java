@@ -1,4 +1,4 @@
-package com.life;
+package com.life.algorithm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

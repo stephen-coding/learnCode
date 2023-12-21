@@ -23,8 +23,6 @@ public class Utils {
      */
     public static void easyExcelExport(List<? extends BaseRowModel> resList, String fileName, HttpServletResponse response) throws IOException {
         //指定文件输出位置，使用该方法不需要引入HttpServletResponse （根据业务需求，而选其一）
-        /*OutputStream outputStream =new FileOutputStream("H:/excel/file/myexcel3.xlsx");
-        ExcelWriter excelWriter = EasyExcelFactory.getWriter(outputStream);*/
 
         //调用浏览器下载（根据业务需求，而选其一）
         String fileName11 = URLEncoder.encode(fileName, "UTF-8");//避免中文乱码
@@ -46,6 +44,26 @@ public class Utils {
         out.flush();
         writer.finish();
         out.close();
+    }
+
+
+    /**
+     *
+     * @param number  要格式化的数字
+     * @param units 包含单位的字符串数组
+     * @param incrementRate  进率
+     * @param baseUnit 基本单位，如" "（空格）用于数字与单位之间的分隔
+     * @return  经过转换后的单位
+     */
+    public static String formatNumberWithCustomUnits(double number, String[] units, int incrementRate, String baseUnit) {
+        int unitIndex = 0;
+
+        while (number >= incrementRate && unitIndex < units.length - 1) {
+            number /= incrementRate;
+            unitIndex++;
+        }
+
+        return String.format("%.2f %s%s", number, units[unitIndex], baseUnit);
     }
 
 

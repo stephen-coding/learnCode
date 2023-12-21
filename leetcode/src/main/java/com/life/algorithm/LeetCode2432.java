@@ -1,6 +1,6 @@
 package com.life.algorithm;
 
-public class LetCode2432 {
+public class LeetCode2432 {
 
     public int hardestWorker(int n, int[][] logs) {
 
